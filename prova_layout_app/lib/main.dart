@@ -11,18 +11,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Prova Layout App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+        ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Dashboard de Registros'),
+      home: const MyHomePage(
+        title: 'Dashboard de Registros',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+  });
 
   final String title;
 
@@ -31,37 +39,47 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Desafio 4: controle para demonstrar o overflow
-  bool _simularOverflow = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor:
+            Theme.of(context).colorScheme.primaryContainer,
         title: Text(widget.title),
       ),
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
+
           child: Column(
-            // Desafio 2: centralização da Column principal
+            // DESAFIO 2
             crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
-              // Desafio 1: três cards de estatística
+              // ==================================
+              // DESAFIO 1 - CARDS DE ESTATÍSTICAS
+              // ==================================
+
               Row(
                 children: [
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.blue.shade50,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                            BorderRadius.circular(8),
                       ),
                       child: const Column(
                         children: [
-                          Icon(Icons.insert_drive_file, color: Colors.blue),
+                          Icon(
+                            Icons.insert_drive_file,
+                            color: Colors.blue,
+                          ),
                           Text(
                             '12',
                             style: TextStyle(
@@ -74,17 +92,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.blue.shade50,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                            BorderRadius.circular(8),
                       ),
                       child: const Column(
                         children: [
-                          Icon(Icons.remove_red_eye, color: Colors.blue),
+                          Icon(
+                            Icons.remove_red_eye,
+                            color: Colors.blue,
+                          ),
                           Text(
                             '145',
                             style: TextStyle(
@@ -97,17 +122,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.blue.shade50,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                            BorderRadius.circular(8),
                       ),
                       child: const Column(
                         children: [
-                          Icon(Icons.camera_alt, color: Colors.blue),
+                          Icon(
+                            Icons.camera_alt,
+                            color: Colors.blue,
+                          ),
                           Text(
                             '45',
                             style: TextStyle(
@@ -125,27 +157,114 @@ class _MyHomePageState extends State<MyHomePage> {
 
               const SizedBox(height: 20),
 
-              // Card de destaque
+              // ==================================
+              // DESAFIO 5 - STACK E POSITIONED
+              // ==================================
+
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.amber.shade100,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      BorderRadius.circular(12),
                 ),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                // Stack permite sobrepor elementos
+                child: Stack(
                   children: [
-                    Text(
-                      'Item em Destaque',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    // Conteúdo principal do card
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        16, 48, 16, 56,
+                      ),
+                      child: Column(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Item em Destaque',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          SizedBox(height: 8),
+
+                          Text(
+                            'Este é o card de destaque principal que será customizado com Stack e Material Card.',
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Este é o card de destaque principal que será customizado com Stack e Material Card.',
+
+                    // PRIMEIRO SELO
+                    // Canto superior direito
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius:
+                              BorderRadius.circular(20),
+                        ),
+                        child: const Text(
+                          'Destaque',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // ==================================
+                    // DESAFIO 5 - SEGUNDO SELO
+                    // CONFIRMADO - INFERIOR ESQUERDO
+                    // ==================================
+
+                    Positioned(
+                      bottom: 10,
+                      left: 10,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 7,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius:
+                              BorderRadius.circular(20),
+                        ),
+
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.check_circle,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+
+                            SizedBox(width: 6),
+
+                            Text(
+                              'Confirmado',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -153,9 +272,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
               const SizedBox(height: 24),
 
-              // Desafio 3: seção Últimos Registros
+              // ==================================
+              // DESAFIO 3 - ÚLTIMOS REGISTROS
+              // ==================================
+
               const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Últimos Registros',
@@ -164,6 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                   Icon(
                     Icons.history,
                     color: Colors.blue,
@@ -180,9 +304,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.description,
                     color: Colors.blue,
                   ),
-                  title: Text('Documento registrado'),
-                  subtitle: Text('Registro recente'),
-                  trailing: Icon(Icons.chevron_right),
+                  title: Text(
+                    'Documento registrado',
+                  ),
+                  subtitle: Text(
+                    'Registro recente',
+                  ),
+                  trailing:
+                      Icon(Icons.chevron_right),
                 ),
               ),
 
@@ -192,96 +321,126 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.camera_alt,
                     color: Colors.blue,
                   ),
-                  title: Text('Nova foto adicionada'),
-                  subtitle: Text('Registro recente'),
-                  trailing: Icon(Icons.chevron_right),
+                  title: Text(
+                    'Nova foto adicionada',
+                  ),
+                  subtitle: Text(
+                    'Registro recente',
+                  ),
+                  trailing:
+                      Icon(Icons.chevron_right),
                 ),
               ),
 
               const SizedBox(height: 24),
 
-              // DESAFIO 4: demonstração de RenderFlex overflow
+              // ==================================
+              // DESAFIO 4 - RENDERFLEX OVERFLOW
+              // ==================================
+
               const Text(
-                'Desafio 4 - Tratamento de Overflow',
+                'Tratamento de Overflow',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 20),
 
-              SwitchListTile(
-                title: const Text('Simular erro de Overflow'),
-                subtitle: Text(
-                  _simularOverflow
-                      ? 'Erro ativado'
-                      : 'Overflow corrigido',
+              // Exemplo com erro proposital
+              const Text(
+                'Exemplo com erro:',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
                 ),
-                value: _simularOverflow,
-                onChanged: (valor) {
-                  setState(() {
-                    _simularOverflow = valor;
-                  });
-                },
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 10),
 
               Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
+                width: 250,
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.red.shade100,
+                  borderRadius:
+                      BorderRadius.circular(8),
                 ),
-                child: Center(
-                  child: SizedBox(
-                    width: 260,
-                    child: _simularOverflow
-                        // Exemplo com erro proposital
-                        ? const Row(
-                            children: [
-                              Icon(Icons.warning, color: Colors.red),
-                              SizedBox(width: 10),
-                              Text(
-                                'Este texto é muito longo e ultrapassa o espaço disponível na tela causando RenderFlex overflow',
-                                softWrap: false,
-                              ),
-                            ],
-                          )
 
-                        // Correção com Expanded
-                        : const Row(
-                            children: [
-                              Icon(Icons.check_circle, color: Colors.green),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: Text(
-                                  'Este texto é muito longo e ultrapassa o espaço disponível na tela causando RenderFlex overflow',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                  ),
+                child: const Row(
+                  children: [
+                    Icon(
+                      Icons.warning,
+                      color: Colors.red,
+                    ),
+
+                    SizedBox(width: 10),
+
+                    // Overflow proposital
+                    Text(
+                      'Este texto é muito grande e ultrapassa o limite disponível da Row',
+                      softWrap: false,
+                    ),
+                  ],
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 25),
 
-              Text(
-                _simularOverflow
-                    ? 'Erro: RenderFlex overflow demonstrado.'
-                    : 'Correção aplicada com Expanded e TextOverflow.ellipsis.',
+              // Exemplo corrigido
+              const Text(
+                'Exemplo corrigido:',
                 style: TextStyle(
-                  color: _simularOverflow
-                      ? Colors.red
-                      : Colors.green,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
+                  color: Colors.green,
                 ),
+              ),
+
+              const SizedBox(height: 10),
+
+              Container(
+                width: 250,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade100,
+                  borderRadius:
+                      BorderRadius.circular(8),
+                ),
+
+                child: const Row(
+                  children: [
+                    Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                    ),
+
+                    SizedBox(width: 10),
+
+                    // Solução utilizando Expanded
+                    Expanded(
+                      child: Text(
+                        'Este texto é muito grande e ultrapassa o limite disponível da Row',
+                        maxLines: 1,
+                        overflow:
+                            TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              const Text(
+                'O Expanded e o TextOverflow.ellipsis corrigem o problema de RenderFlex overflow.',
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey,
+                ),
               ),
             ],
           ),
