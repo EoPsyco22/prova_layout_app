@@ -31,6 +31,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Desafio 4: controle para demonstrar o overflow
+  bool _simularOverflow = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            // Desafio 2: alinhamento centralizado
+            // Desafio 2: centralização da Column principal
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Desafio 1: três cards de estatística
@@ -150,10 +153,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
               const SizedBox(height: 24),
 
-              // DESAFIO 3: seção Últimos Registros
-              Row(
+              // Desafio 3: seção Últimos Registros
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     'Últimos Registros',
                     style: TextStyle(
@@ -171,7 +174,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
               const SizedBox(height: 12),
 
-              // Registros recentes
               const Card(
                 child: ListTile(
                   leading: Icon(
@@ -194,6 +196,92 @@ class _MyHomePageState extends State<MyHomePage> {
                   subtitle: Text('Registro recente'),
                   trailing: Icon(Icons.chevron_right),
                 ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // DESAFIO 4: demonstração de RenderFlex overflow
+              const Text(
+                'Desafio 4 - Tratamento de Overflow',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              SwitchListTile(
+                title: const Text('Simular erro de Overflow'),
+                subtitle: Text(
+                  _simularOverflow
+                      ? 'Erro ativado'
+                      : 'Overflow corrigido',
+                ),
+                value: _simularOverflow,
+                onChanged: (valor) {
+                  setState(() {
+                    _simularOverflow = valor;
+                  });
+                },
+              ),
+
+              const SizedBox(height: 12),
+
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: SizedBox(
+                    width: 260,
+                    child: _simularOverflow
+                        // Exemplo com erro proposital
+                        ? const Row(
+                            children: [
+                              Icon(Icons.warning, color: Colors.red),
+                              SizedBox(width: 10),
+                              Text(
+                                'Este texto é muito longo e ultrapassa o espaço disponível na tela causando RenderFlex overflow',
+                                softWrap: false,
+                              ),
+                            ],
+                          )
+
+                        // Correção com Expanded
+                        : const Row(
+                            children: [
+                              Icon(Icons.check_circle, color: Colors.green),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  'Este texto é muito longo e ultrapassa o espaço disponível na tela causando RenderFlex overflow',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Text(
+                _simularOverflow
+                    ? 'Erro: RenderFlex overflow demonstrado.'
+                    : 'Correção aplicada com Expanded e TextOverflow.ellipsis.',
+                style: TextStyle(
+                  color: _simularOverflow
+                      ? Colors.red
+                      : Colors.green,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),
