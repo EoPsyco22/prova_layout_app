@@ -332,7 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               // Demonstração da correção
               const Text(
-                'Exemplo corrigido:',:
+                'Exemplo corrigido:',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -372,7 +372,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const Text(
                 'O Expanded e o TextOverflow.ellipsis corrigem o problema de RenderFlex overflow.',
                 textAlign: TextAlign.center,
-                style: TextStyle(:
+                style: TextStyle(
                   fontSize: 13,
                   color: Colors.grey,
                 ),
