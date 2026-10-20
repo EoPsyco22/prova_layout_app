@@ -53,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(16.0),
 
           child: Column(
-            // DESAFIO 2
+            // DESAFIO 2:
+            // Centralizar os elementos da Column principal
             crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
@@ -158,115 +159,135 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 20),
 
               // ==================================
-              // DESAFIO 5 - STACK E POSITIONED
+              // DESAFIO 6 - MATERIAL CARD
               // ==================================
+              // Container substituído por Card
+              // Mantendo Stack e Positioned do Desafio 5
 
-              Container(
+              SizedBox(
                 width: double.infinity,
-                decoration: BoxDecoration(
+
+                child: Card(
+                  // DESAFIO 6: elevação do Material
+                  elevation: 4,
+
                   color: Colors.amber.shade100,
-                  borderRadius:
-                      BorderRadius.circular(12),
-                ),
 
-                // Stack permite sobrepor elementos
-                child: Stack(
-                  children: [
-                    // Conteúdo principal do card
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        16, 48, 16, 56,
-                      ),
-                      child: Column(
-                        crossAxisAlignment:
-                            CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Item em Destaque',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                  margin: EdgeInsets.zero,
 
-                          SizedBox(height: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
 
-                          Text(
-                            'Este é o card de destaque principal que será customizado com Stack e Material Card.',
-                          ),
-                        ],
-                      ),
-                    ),
+                  clipBehavior: Clip.antiAlias,
 
-                    // PRIMEIRO SELO
-                    // Canto superior direito
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
+                  child: Stack(
+                    children: [
+                      // Conteúdo principal do Card
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          16, 48, 16, 56,
                         ),
-                        decoration: BoxDecoration(
-                          color: Colors.orange,
-                          borderRadius:
-                              BorderRadius.circular(20),
-                        ),
-                        child: const Text(
-                          'Destaque',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // ==================================
-                    // DESAFIO 5 - SEGUNDO SELO
-                    // CONFIRMADO - INFERIOR ESQUERDO
-                    // ==================================
-
-                    Positioned(
-                      bottom: 10,
-                      left: 10,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 7,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius:
-                              BorderRadius.circular(20),
-                        ),
-
-                        child: const Row(
-                          mainAxisSize: MainAxisSize.min,
+                        child: Column(
+                          crossAxisAlignment:
+                              CrossAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.check_circle,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-
-                            SizedBox(width: 6),
-
                             Text(
-                              'Confirmado',
+                              'Item em Destaque',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
+                            ),
+
+                            SizedBox(height: 8),
+
+                            Text(
+                              'Este é o card de destaque principal que será customizado com Stack e Material Card.',
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  ],
+
+                      // ==================================
+                      // DESAFIO 5 - PRIMEIRO SELO
+                      // ==================================
+
+                      Positioned(
+                        top: 10,
+                        right: 10,
+
+                        child: Container(
+                          padding:
+                              const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius:
+                                BorderRadius.circular(20),
+                          ),
+
+                          child: const Text(
+                            'Destaque',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // ==================================
+                      // DESAFIO 5 - SEGUNDO SELO
+                      // CONFIRMADO - INFERIOR ESQUERDO
+                      // ==================================
+
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+
+                        child: Container(
+                          padding:
+                              const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 7,
+                          ),
+
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius:
+                                BorderRadius.circular(20),
+                          ),
+
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.check_circle,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+
+                              SizedBox(width: 6),
+
+                              Text(
+                                'Confirmado',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
@@ -363,6 +384,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: 250,
                 padding: const EdgeInsets.all(10),
+
                 decoration: BoxDecoration(
                   color: Colors.red.shade100,
                   borderRadius:
@@ -404,6 +426,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: 250,
                 padding: const EdgeInsets.all(10),
+
                 decoration: BoxDecoration(
                   color: Colors.green.shade100,
                   borderRadius:
@@ -419,7 +442,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     SizedBox(width: 10),
 
-                    // Solução utilizando Expanded
+                    // Correção com Expanded
                     Expanded(
                       child: Text(
                         'Este texto é muito grande e ultrapassa o limite disponível da Row',
