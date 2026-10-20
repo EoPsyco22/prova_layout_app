@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Desafio 2: alinhamento centralizado
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Primeira Row com os 3 cards de estatística
+              // Desafio 1: três cards de estatística
               Row(
                 children: [
                   Expanded(
@@ -119,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
+
               const SizedBox(height: 20),
 
               // Card de destaque
@@ -144,6 +145,54 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Este é o card de destaque principal que será customizado com Stack e Material Card.',
                     ),
                   ],
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // DESAFIO 3: seção Últimos Registros
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    'Últimos Registros',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Icon(
+                    Icons.history,
+                    color: Colors.blue,
+                    size: 28,
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 12),
+
+              // Registros recentes
+              const Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.description,
+                    color: Colors.blue,
+                  ),
+                  title: Text('Documento registrado'),
+                  subtitle: Text('Registro recente'),
+                  trailing: Icon(Icons.chevron_right),
+                ),
+              ),
+
+              const Card(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.camera_alt,
+                    color: Colors.blue,
+                  ),
+                  title: Text('Nova foto adicionada'),
+                  subtitle: Text('Registro recente'),
+                  trailing: Icon(Icons.chevron_right),
                 ),
               ),
             ],
