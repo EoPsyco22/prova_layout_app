@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            // Mantido o alinhamento padrão por enquanto (será alterado no Desafio 2)
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // Desafio 2: alinhamento centralizado
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Primeira Row com os 3 cards de estatística (Desafio 1 concluído aqui)
+              // Primeira Row com os 3 cards de estatística
               Row(
                 children: [
                   Expanded(
@@ -58,7 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Column(
                         children: [
                           Icon(Icons.insert_drive_file, color: Colors.blue),
-                          Text('12', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text(
+                            '12',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Text('Docs'),
                         ],
                       ),
@@ -75,13 +82,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Column(
                         children: [
                           Icon(Icons.remove_red_eye, color: Colors.blue),
-                          Text('145', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text(
+                            '145',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Text('Visitas'),
                         ],
                       ),
                     ),
                   ),
-                  // 3º Card adicionado com Expanded conforme o Desafio 1
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(12),
@@ -93,7 +105,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Column(
                         children: [
                           Icon(Icons.camera_alt, color: Colors.blue),
-                          Text('45', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text(
+                            '45',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Text('Fotos'),
                         ],
                       ),
@@ -102,8 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               const SizedBox(height: 20),
-              
-              // Bloco de Card de Destaque Inicial (Base para as alterações dos Desafios 5 e 6)
+
+              // Card de destaque
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -114,9 +132,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Item em Destaque', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    Text(
+                      'Item em Destaque',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     SizedBox(height: 8),
-                    Text('Este é o card de destaque principal que será customizado com Stack e Material Card.'),
+                    Text(
+                      'Este é o card de destaque principal que será customizado com Stack e Material Card.',
+                    ),
                   ],
                 ),
               ),
@@ -127,3 +153,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
